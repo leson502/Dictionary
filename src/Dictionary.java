@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -12,6 +15,10 @@ public class Dictionary {
 
     public void insertWord(String word, WordDescription description) {
         tree.insert(word, description);
+    }
+
+    public void delete(String word) {
+        tree.delete(word);
     }
 
     public void importFromFile(String filePath) throws Exception {
@@ -38,8 +45,16 @@ public class Dictionary {
         return tree.prefixSearch(prefix);
     }
 
-    public void exportToFile(String filePath) throws Exception {
-
+    public void exportToFile(String filePath) throws IOException {
+        File file = new File(filePath);
+        file.createNewFile();
+        FileWriter fileWriter = new FileWriter(file);
+        ArrayList<WordDescription> words = prefixSearch("");
+        for (WordDescription word : words) {
+            System.out.println(word.getWord() + " " + word.getMeaning());
+            fileWriter.write(word.getWord() + " " + word.getMeaning() + '\n');
+        }
+        fileWriter.close();
     }
 
     public static void main(String[] args) throws Exception {
@@ -51,5 +66,6 @@ public class Dictionary {
             System.out.println(description.getWord() + " " + description.getMeaning());
         else
             System.out.println("not Found");
+        dictionary.exportToFile("content/dictionary.txt");
     }
 }
