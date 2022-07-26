@@ -21,18 +21,25 @@ public class Dictionary {
         tree.delete(word);
     }
 
-    public void importFromFile(String filePath) throws Exception {
-        Scanner scanner = new Scanner(Files.newInputStream(Paths.get(filePath)));
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            int firstSpacePosition = 0;
-            while (line.charAt(firstSpacePosition) != ' ' && firstSpacePosition < line.length())
-                firstSpacePosition++;
-            String word = line.substring(0, firstSpacePosition);
-            word = word.toLowerCase();
-            WordDescription description = new WordDescription(word, line.substring(firstSpacePosition + 1));
-            insertWord(word, description);
+    public void importFromFile(String filePath) {
+        try {
+            Scanner scanner = new Scanner(Files.newInputStream(Paths.get(filePath)));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                int firstSpacePosition = 0;
+                while (firstSpacePosition < (line.length() - 1) && line.charAt(firstSpacePosition) != ' ') {
+                    firstSpacePosition++;
+                }
+
+                String word = line.substring(0, firstSpacePosition);
+                word = word.toLowerCase();
+                WordDescription description = new WordDescription(word, line.substring(firstSpacePosition + 1));
+                insertWord(word, description);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     public WordDescription search(String word) {
@@ -42,30 +49,29 @@ public class Dictionary {
 
     public ArrayList<WordDescription> prefixSearch(String prefix) {
         prefix = prefix.toLowerCase();
-        return tree.prefixSearch(prefix);
+        return tree.prefixSearch(prefix, 50);
     }
 
-    public void exportToFile(String filePath) throws IOException {
-        File file = new File(filePath);
-        file.createNewFile();
-        FileWriter fileWriter = new FileWriter(file);
-        ArrayList<WordDescription> words = prefixSearch("");
-        for (WordDescription word : words) {
-            System.out.println(word.getWord() + " " + word.getMeaning());
-            fileWriter.write(word.getWord() + " " + word.getMeaning() + '\n');
+    public void exportToFile(String filePath) {
+        try {
+            File file = new File(filePath);
+            file.createNewFile();
+            FileWriter fileWriter = new FileWriter(file);
+            ArrayList<WordDescription> words = prefixSearch("");
+            for (WordDescription word : words) {
+                fileWriter.write(word.getWord() + " " + word.getMeaning() + '\n');
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        fileWriter.close();
+
     }
 
     public static void main(String[] args) throws Exception {
         Dictionary dictionary = new Dictionary();
         dictionary.importFromFile("content/dictionary.txt");
 
-        WordDescription description = dictionary.search("hello");
-        if (description != null)
-            System.out.println(description.getWord() + " " + description.getMeaning());
-        else
-            System.out.println("not Found");
         dictionary.exportToFile("content/dictionary.txt");
     }
 }

@@ -13,4 +13,8 @@ public class WordDescription {
     public String getMeaning() {
         return meaning;
     }
+
+    public String toString() {
+        return this.word;
+    }
 }

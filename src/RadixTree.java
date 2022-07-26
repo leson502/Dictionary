@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -16,7 +17,7 @@ public class RadixTree<V> {
         return NO_MISMATCH;
     }
 
-    private class Node {
+    private class Node implements Comparable<Node> {
         private final HashMap<Character, Node> next;
         private Node parent;
         private V value;
@@ -95,6 +96,11 @@ public class RadixTree<V> {
 
         public Collection<Node> getAllNextNode() {
             return next.values();
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            return o.label.charAt(0) - this.label.charAt(0);
         }
     }
 
@@ -181,7 +187,7 @@ public class RadixTree<V> {
         return new Pair<>(null, null);
     }
 
-    private ArrayList<V> getWordsAfter(Node node) {
+    private ArrayList<V> getWordsAfter(Node node, int limitWords) {
         if (node == null) {
             return new ArrayList<>();
         }
@@ -189,13 +195,15 @@ public class RadixTree<V> {
         Stack<Node> stateStack = new Stack<>();
 
         stateStack.add(node);
-        while (!stateStack.empty()) {
+        while (!stateStack.empty() && resultArr.size() <= limitWords) {
             Node currNode = stateStack.pop();
 
             if (currNode.getValue() != null)
                 resultArr.add(currNode.getValue());
 
-            Collection<Node> nextNodes = currNode.getAllNextNode();
+            ArrayList<Node> nextNodes = new ArrayList<>(currNode.getAllNextNode());
+            Collections.sort(nextNodes);
+
             for (Node nextNode : nextNodes) {
                 stateStack.push(nextNode);
             }
@@ -216,9 +224,9 @@ public class RadixTree<V> {
         }
     }
 
-    public ArrayList<V> prefixSearch(String prefix) {
+    public ArrayList<V>prefixSearch(String prefix, int limitWords) {
         Pair<Node, String> matches = prefixMatches(prefix);
-        return getWordsAfter(matches.key);
+        return getWordsAfter(matches.key, limitWords);
     }
 
     public void delete(String word) {
