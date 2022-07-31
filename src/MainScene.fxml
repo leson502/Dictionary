@@ -6,10 +6,9 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <children>
-      <VBox layoutY="21.0" prefHeight="579.0" prefWidth="60.0">
+      <VBox prefHeight="600.0" prefWidth="60.0">
          <children>
             <Button mnemonicParsing="false" onAction="#switchPageSearch" prefHeight="60.0" prefWidth="60.0" text="Search" />
-            <Button mnemonicParsing="false" onAction="#switchPageEdit" prefHeight="60.0" prefWidth="60.0" text="Edit" />
          </children>
       </VBox>
       <AnchorPane fx:id="mainPage" layoutX="60.0" prefHeight="600.0" prefWidth="740.0" />
