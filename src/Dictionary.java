@@ -49,7 +49,7 @@ public class Dictionary {
 
     public ArrayList<WordDescription> prefixSearch(String prefix) {
         prefix = prefix.toLowerCase();
-        return tree.prefixSearch(prefix, 50);
+        return tree.prefixSearch(prefix, 20);
     }
 
     public void exportToFile(String filePath) {
