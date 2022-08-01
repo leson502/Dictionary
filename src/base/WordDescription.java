@@ -1,3 +1,5 @@
+package base;
+
 public class WordDescription {
     private final String word;
     private String meaning;

@@ -1,3 +1,5 @@
+package main;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    public static String searchScene = "SearchScene.fxml";
+    public static String searchSceneURL = "SearchScene.fxml";
     @FXML
     public AnchorPane searchPane;
 
@@ -19,7 +21,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            searchPane = FXMLLoader.load(getClass().getResource("SearchScene.fxml"));
+            searchPane = FXMLLoader.load(getClass().getResource(searchSceneURL));
         } catch (Exception e) {
             e.printStackTrace();
         }
