@@ -1,3 +1,7 @@
+package main;
+
+import base.Dictionary;
+import base.WordDescription;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
