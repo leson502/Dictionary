@@ -12,7 +12,7 @@ public class DictionaryApp extends Application {
     @Override
     public void start(Stage primaryStage)  {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../FXML/MainScene.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Dictionary");

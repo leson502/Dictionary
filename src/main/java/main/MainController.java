@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    public static String searchSceneURL = "SearchScene.fxml";
+    public static String searchSceneURL = "../FXML/SearchScene.fxml";
     @FXML
     public AnchorPane searchPane;
 
