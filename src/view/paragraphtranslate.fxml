@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPanelParagraphTranslate" prefHeight="579.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParagraphTranslateController">
+   <children>
+      <TextArea fx:id="paragraphContent" layoutX="14.0" layoutY="41.0" prefHeight="200.0" prefWidth="741.0" promptText="Nhập đoạn thông tin tiếng Anh" styleClass="textAreaParagraphTranslate">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TextArea>
+      <Button fx:id="btnTranslateParagraph" layoutX="220.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnTranslateParagraphEventHandle" text="Dịch">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="paragraphTranslated" editable="false" layoutX="14.0" layoutY="333.0" prefHeight="233.0" prefWidth="741.0" promptText="Kết quả của đoạn dịch">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TextArea>
+      <HBox alignment="BOTTOM_LEFT" layoutX="14.0" prefHeight="39.0" prefWidth="741.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập văn bản cần dịch ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="(">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="languageFrom" strokeType="OUTSIDE" strokeWidth="0.0" text="en - English">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=")">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_LEFT" layoutX="13.0" layoutY="290.0" prefHeight="39.0" prefWidth="741.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kết quả dịch">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="(">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="languageTo" strokeType="OUTSIDE" strokeWidth="0.0" text="vi - Vietnam">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=")">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Button fx:id="btnChangeLanguage" layoutX="157.0" layoutY="254.0" mnemonicParsing="false" onAction="#btnChangeLanguageEventHandle">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/arrow-circle.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text layoutX="28.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chuyển ngôn ngữ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+.AnchorPaneScene2 {
+    -fx-background-color: #ffffe6;
+}
+
+.MenuLayout {
+
+}
+
+.buttonMenu {
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-color: none;
+    -fx-border-radius: 0 10 10 0;
+    -fx-focus-color: green;
+}
+
+.buttonMenu:hover {
+    -fx-cursor: hand;
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-radius: 0 10 10 0;
+}
+
+@keyframes fad {
+    from {
+        -fx-scale-x: 1;
+    }
+    to {
+        -fx-scale-x: 1.001;
+        -fx-border-color: blue;
+    }
+}
+
+.LogoDictionary {
+
+}
+
+.mainLayout {
+
+}

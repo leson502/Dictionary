@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500" prefWidth="700" stylesheets="/style-file/rundictionaryapp.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RunDictionaryAppController">
+   <children>
+      <Text id="text-welcome" layoutX="166.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chào mừng bạn đến với" wrappingWidth="386.828125">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="165.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="app-title" text="Phần mềm từ điển" wrappingWidth="386.828125">
+         <font>
+            <Font name="System Bold" size="43.0" />
+         </font>
+      </Text>
+      <Text layoutX="584.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="team-group" text="Nhóm  9 " wrappingWidth="74.177734375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="580.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="team-group" text="Lê Thế Sơn" />
+      <Text layoutX="568.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="team-group" text="Vi Quốc Thiện" />
+      <Text layoutX="551.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="team-group" text="Phùng Quang Tiến" />
+      <Button fx:id="startButton" defaultButton="true" layoutX="271.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#buttonStartClick" prefHeight="59.0" prefWidth="177.0" styleClass="button-start" text="Bắt đầu sử dụng">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button cancelButton="true" layoutX="305.0" layoutY="436.0" mnemonicParsing="false" onMouseClicked="#exitButtonClick" styleClass="button-exit" text="Thoát phần mềm">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView depthTest="ENABLE" fitHeight="191.0" fitWidth="191.0" layoutX="32.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/image/image-in-main-app.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="529.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="version" text="Phần mềm từ điển Eng-Vie v1.0" />
+      <Text layoutX="14.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INT2204 40 (N1)" />
+   </children>
+</Pane>

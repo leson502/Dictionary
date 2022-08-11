@@ -1,0 +1,22 @@
+
+.button {
+    -fx-background-color: none;
+    -fx-text-fill: #000000;
+    -fx-font-size: 13;
+}
+
+.button:hover {
+    -fx-background-color: #D4D7DC;
+    -fx-text-fill: #2e3338;
+}
+
+.button.active {
+    -fx-background-color: #555c5d;
+    -fx-text-fill: #2e3338;
+}
+
+
+
+.button-search {
+    -fx-graphic: url('../media/favicon/main/search.png');
+}
