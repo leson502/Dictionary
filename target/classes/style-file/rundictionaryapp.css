@@ -1,0 +1,30 @@
+.version {
+    -fx-fill: white;
+}
+.team-group {
+    -fx-fill: red;
+    -fx-font-weight: 600;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.app-title {
+    -fx-fill: #345feb;
+}
+#backGround {
+    -fx-background-image: url("/image/Main-Bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+#text-welcome {
+    -fx-fill: red;
+}
+
+.image-in-main {
+
+}
+
+.button-start {
+    -fx-background-radius: 20;
+    -fx-font-size: 20px;
+}
+

@@ -1,0 +1,69 @@
+.AnchorPaneScene2 {
+    -fx-background-color: #ffffe6;
+}
+
+.MenuLayout {
+
+}
+
+.buttonMenu {
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-color: none;
+    -fx-border-radius: 0 10 10 0;
+    -fx-focus-color: green;
+}
+
+.buttonMenu:hover {
+    -fx-cursor: hand;
+    -fx-background-radius: 0 10 10 0;
+    -fx-border-radius: 0 10 10 0;
+}
+
+@keyframes fad {
+    from {
+        -fx-scale-x: 1;
+    }
+    to {
+        -fx-scale-x: 1.001;
+        -fx-border-color: blue;
+    }
+}
+
+.LogoDictionary {
+
+}
+
+.mainLayout {
+
+}
+
+.inputWord {
+    -fx-background-radius: 30 30 30 30;
+}
+
+.buttonSearchWord {
+    -fx-background-radius: 0 50 50 0;
+}
+
+.listViewWord {
+    -fx-background-radius: 10 10 10 10;
+}
+
+.wordMeaningArea {
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-color: white;
+}
+
+.titleWordMeaning {
+    -fx-background-color: white;
+}
+
+.tableColumnWord {
+    -fx-font-size: 16px;
+}
+
+.textAreaShowMeaning {
+    -fx-background-radius: 10 10 10 10;
+    -fx-border-radius: 10 10 10 10;
+    -fx-border-color: green;
+}

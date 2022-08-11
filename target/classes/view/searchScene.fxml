@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPaneTranslate" prefHeight="483.0" prefWidth="676.0" styleClass="mainLayout" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.searchWordController">
+   <children>
+      <AnchorPane layoutX="-6.0" prefHeight="581.0" prefWidth="290.0">
+         <children>
+            <TextField fx:id="inputWord" layoutX="9.0" layoutY="14.0" prefHeight="39.0" prefWidth="271.0" promptText="Nhập từ cần tra" styleClass="inputWord">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TableView fx:id="tableViewWord" layoutX="9.0" layoutY="62.0" prefHeight="519.0" prefWidth="271.0">
+               <columns>
+                  <TableColumn fx:id="indexInTable" editable="false" minWidth="0.0" prefWidth="0.0" visible="false" />
+                  <TableColumn fx:id="wordInTable" editable="false" maxWidth="270.0" prefWidth="318.0" resizable="false" sortable="false" styleClass="tableColumnWord" />
+                  <TableColumn fx:id="meaningInTable" editable="false" minWidth="0.0" prefWidth="0.0" text="Nghĩa từ" visible="false" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="289.0" layoutY="47.0" prefHeight="533.0" prefWidth="485.0" styleClass="wordMeaningArea">
+         <children>
+            <TextArea fx:id="textShowMeaning" editable="false" layoutX="8.0" layoutY="54.0" prefHeight="466.0" prefWidth="477.0" text="Từ bạn chọn sẽ được hiển thị nghĩa tại đây !">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+            <Button fx:id="btnVoiceUS" contentDisplay="TOP" layoutX="385.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#btnVoiceUSClick" prefHeight="39.0" prefWidth="40.0" text="EN-US">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/speakerEN-US.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Text layoutX="243.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phát âm giọng nói">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnVoiceUK" contentDisplay="TOP" layoutX="431.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#btnVoiceUKClick" prefHeight="39.0" prefWidth="40.0" text="EN-UK">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/speakerEN-US.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Text layoutX="346.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phần mềm từ điển v1.0" wrappingWidth="399.13671875">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
