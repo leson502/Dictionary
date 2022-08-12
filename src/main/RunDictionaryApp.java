@@ -21,13 +21,12 @@ import java.util.Optional;
 
 public class RunDictionaryApp extends Application {
     public Stage stage;
-
+    public static SceneStore sceneStore = new SceneStore();
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/searchScene.fxml"));
-            stage.setScene(new Scene(root));
+            stage.setScene(sceneStore.getStartScene());
             stage.setTitle("Phần mềm từ điển v1.0");
             stage.setOnCloseRequest(closeAppNotice());
             stage.setResizable(false);

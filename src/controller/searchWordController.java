@@ -1,6 +1,7 @@
 package controller;
 
 import api.VoiceRSS;
+import com.sun.org.apache.xerces.internal.impl.xs.SchemaNamespaceSupport;
 import connection.MysqlConnector;
 import connection.WordModel;
 import javafx.beans.value.ChangeListener;
@@ -36,7 +37,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class searchWordController implements Initializable {
-
     @FXML
     private AnchorPane anchorPaneMain;
     @FXML

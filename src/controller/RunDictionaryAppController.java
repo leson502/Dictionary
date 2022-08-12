@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import main.RunDictionaryApp;
 
 import java.net.URL;
 import java.util.Optional;
@@ -32,8 +33,7 @@ public class RunDictionaryAppController implements Initializable {
         // Lấy stage đang được scene đầu tiên sử dụng
         Stage getStage = (Stage) startButton.getScene().getWindow();
         try {
-            Parent toScene2 = new FXMLLoader().load(getClass().getResource("/view/searchScene.fxml"));
-            Scene sceneUse = new Scene(toScene2);
+            Scene sceneUse = RunDictionaryApp.sceneStore.getAppScene();
             getStage.setTitle("Dictionary Eng-Vie v1.0");
             getStage.setScene(sceneUse);
             getStage.centerOnScreen();
