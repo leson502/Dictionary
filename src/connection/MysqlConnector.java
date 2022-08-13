@@ -13,7 +13,7 @@ public class MysqlConnector {
     // UserName đăng nhập vào mysql
     private static String userName = "root";
     // password đăng nhập vào mysql
-    private static String password = "%M0unt41n";
+    private static String password = "zJPkyYe#rLZVWL@2";
     // địa chỉ thông qua local host để kết nối đến đúng database trong mysql
     private static String urlConnection = "jdbc:mysql://localhost:3306/ditc?";
 
