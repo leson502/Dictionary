@@ -1,5 +1,6 @@
 package main;
 
+import database.DitcData;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -83,6 +84,7 @@ public class RunDictionaryApp extends Application {
     }
 
     public static void main(String[] args) {
+        DitcData.importFromDatabase();
         launch(args);
     }
 }

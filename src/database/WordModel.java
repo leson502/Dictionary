@@ -1,4 +1,4 @@
-package connection;
+package database;
 
 /**
  * Class đại diện cho những properties trong database !!!!
@@ -48,5 +48,10 @@ public class WordModel {
 
     public void setMeaning(String meaning) {
         this.meaning = meaning;
+    }
+
+    @Override
+    public String toString() {
+        return word;
     }
 }

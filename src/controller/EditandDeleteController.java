@@ -1,30 +1,20 @@
 package controller;
 
-import connection.MysqlConnector;
-import connection.WordModel;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
-import javafx.event.EventHandler;
+import database.DitcData;
+import database.WordModel;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
 
-import java.awt.Desktop;
-import java.io.File;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -39,93 +29,36 @@ public class EditandDeleteController implements Initializable {
     Button btnCancel;
     @FXML
     TextField inputWord;
-
     @FXML
     TextArea textShowMeaning;
     @FXML
-    TableView<WordModel> tableViewWord;
-    @FXML
-    TableColumn<WordModel, String> wordInTable;
-    @FXML
-    TableColumn<WordModel, String> meaningInTable;
-    @FXML
-    TableColumn<WordModel, Integer> indexInTable;
-
-    ObservableList<WordModel> wordModelObservableList = FXCollections.observableArrayList();
-    private AutoCompletionBinding<WordModel> listViewInput;
-
+    ListView<WordModel> wordList;
+    private WordModel selectedWord;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        MysqlConnector.getTableViewWordData(wordModelObservableList);
         btnConfirm.setDisable(true);
-        indexInTable.setCellValueFactory(new PropertyValueFactory<>("id"));
-        wordInTable.setCellValueFactory(new PropertyValueFactory<>("word"));
-        meaningInTable.setCellValueFactory(new PropertyValueFactory<>("meaning"));
-        meaningInTable.setVisible(false);
-        indexInTable.setVisible(false);
-        tableViewWord.setItems(wordModelObservableList);
+        wordList.getItems().clear();
+    }
 
-        FilteredList<WordModel> filteredData = new FilteredList<>(wordModelObservableList, b -> true);
-        inputWord.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(wordModel -> {
-                // Nếu ô input trống thì hiển thị toàn bộ danh sách
-                if (newValue.isEmpty() || newValue == null) {
-                    return true;
-                }
-                String inputWord = newValue.toLowerCase();
-                if (wordModel.getWord().toLowerCase().compareToIgnoreCase(inputWord) == 0 || wordModel.getWord().toLowerCase().compareToIgnoreCase(inputWord) > 0) {
-                    return true;
-                } else return false; // ko thay
-            });
-        });
+    public void wordListClickedEventHandle(Event e) {
+        selectedWord = wordList.getSelectionModel().getSelectedItem();
+        if (selectedWord != null)
+            textShowMeaning.setText(selectedWord.getMeaning());
+        else
+            textShowMeaning.setText("");
+    }
 
-        SortedList<WordModel> sortedWordList = new SortedList<>(filteredData);
-        sortedWordList.comparatorProperty().bind(tableViewWord.comparatorProperty());
-        tableViewWord.setItems(filteredData);
-
-        tableViewWord.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                WordModel word = tableViewWord.getItems().get(tableViewWord.getSelectionModel().getSelectedIndex());
-                textShowMeaning.setText(word.getMeaning());
-            }
-        });
-        tableViewWord.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                //Don't show header
-                Pane header = (Pane) tableViewWord.lookup("TableHeaderRow");
-                if (header.isVisible()) {
-                    header.setMaxHeight(0);
-                    header.setMinHeight(0);
-                    header.setPrefHeight(0);
-                    header.setVisible(false);
-                }
-            }
-        });
+    public void inputWordEventHandle(KeyEvent e) {
+        wordList.getItems().clear();
+        wordList.getItems().addAll(DitcData.prefixSearch(inputWord.getText()));
     }
 
     public void btnEditAndDeleteClick(MouseEvent mouseEvent) {
         Alert("Bạn đang ở trang sửa / xoá từ", "Bạn đã ở đây rồi !", "/image/warning.png");
     }
 
-    public void btnShowIntroClick(MouseEvent mouseEvent) {
-        try {
-            String s = System.getProperty("user.dir");
-            File introFile = new File(s + "\\src\\intro\\file.txt");
-            if (introFile.exists()) {
-                Desktop.getDesktop().open(introFile);
-            } else {
-                Alert("Không tìm thấy file", "Hãy thử lại", "/image/warning.png");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public void btnEditWordClick(MouseEvent mouseEvent) {
-        if (tableViewWord.getSelectionModel().getSelectedItem() != null) {
+        if (selectedWord != null) {
             btnDeleteWord.setDisable(true);
             btnCancel.setDisable(false);
             btnConfirm.setDisable(false);
@@ -136,7 +69,9 @@ public class EditandDeleteController implements Initializable {
     }
 
     public void btnDeleteWordClick(MouseEvent mouseEvent) {
-        if (tableViewWord.getSelectionModel().getSelectedItem() != null) {
+        if (selectedWord != null) {
+            DitcData.delete(selectedWord);
+            selectedWord = null;
             Alert("Xoá dữ liệu thành công", "Xem lại danh sách từ !!", "/image/btnConfirm.png");
         } else {
             Alert("Bạn chưa chọn dữ liệu trên bảng", "Hãy chọn dữ liệu trước !!", "/Image/warning.png");
@@ -147,6 +82,7 @@ public class EditandDeleteController implements Initializable {
         btnDeleteWord.setDisable(false);
         btnCancel.setDisable(true);
         btnConfirm.setDisable(true);
+        DitcData.update(selectedWord, textShowMeaning.getText());
         Alert("Hoàn thành", "Dữ liệu đã được sửa, hãy xem lại thay đổi !", "/image/btnConfirm.png");
     }
 
@@ -179,7 +115,7 @@ public class EditandDeleteController implements Initializable {
         btnConfirm.setDisable(true);
         textShowMeaning.setEditable(false);
         btnCancel.setDisable(true);
-        String s = tableViewWord.getSelectionModel().getSelectedItem().getMeaning().toString();
+        String s = selectedWord.getMeaning();
         textShowMeaning.setText(s);
         Alert("Huỷ bỏ", "Dữ liệu không bị thay đổi !!", "/Image/warning.png");
     }
