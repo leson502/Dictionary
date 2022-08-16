@@ -2,12 +2,15 @@ package database;
 
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 
-public class DitcData {
+public class DictionaryData {
 
     private static int idMax = 0;
     private static final RadixTree<WordModel> tree = new RadixTree<>();
+
+    static {
+        importFromDatabase();
+    }
 
     public static void insertWord(String word, String meaning) {
         idMax++;
@@ -24,6 +27,7 @@ public class DitcData {
         word.setMeaning(newMeaning);
         MysqlConnector.updateWord(word.getIndex(), newMeaning);
     }
+
     public static ArrayList<WordModel> prefixSearch(String prefix) {
         prefix = prefix.toLowerCase();
         return tree.prefixSearch(prefix, 100);

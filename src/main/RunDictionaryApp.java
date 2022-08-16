@@ -1,11 +1,8 @@
 package main;
 
-import database.DitcData;
+import database.DictionaryData;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -84,7 +81,6 @@ public class RunDictionaryApp extends Application {
     }
 
     public static void main(String[] args) {
-        DitcData.importFromDatabase();
         launch(args);
     }
 }

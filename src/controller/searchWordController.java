@@ -1,8 +1,7 @@
 package controller;
 
 import api.VoiceRSS;
-import database.DitcData;
-import database.MysqlConnector;
+import database.DictionaryData;
 import database.WordModel;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -37,7 +36,7 @@ public class searchWordController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         textShowMeaning.setEditable(false);
         wordList.getItems().clear();
-        wordList.getItems().addAll(DitcData.prefixSearch(""));
+        wordList.getItems().addAll(DictionaryData.prefixSearch(""));
     }
 
     public void btnVoiceUSClick(MouseEvent mouseEvent) {
@@ -58,7 +57,7 @@ public class searchWordController implements Initializable {
 
     public void inputWordEventHandle(KeyEvent e) {
         wordList.getItems().clear();
-        wordList.getItems().addAll(DitcData.prefixSearch(inputWord.getText()));
+        wordList.getItems().addAll(DictionaryData.prefixSearch(inputWord.getText()));
     }
 
     public void btnVoiceUKClick(MouseEvent mouseEvent) {

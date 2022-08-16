@@ -1,7 +1,6 @@
 package controller;
 
-import database.DitcData;
-import database.MysqlConnector;
+import database.DictionaryData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -70,7 +69,7 @@ public class AddWordController implements Initializable {
         if (s1.isEmpty() || s2.isEmpty() || s3.isEmpty() || s4.isEmpty()) {
             Alert("Bạn điền thiếu thông tin", "Hãy đảm bảo bạn đã điền đầy đủ thông tin trong 4 ô đã cho !", "/image/warning.png");
         } else {
-            DitcData.insertWord(s1, "@" + s1 + " " + s3 + "\n" + s1 + "\n" + s4);
+            DictionaryData.insertWord(s1, "@" + s1 + " " + s3 + "\n" + s1 + "\n" + s4);
             Alert("Đã thêm từ thành công !", "Quay lại \"tra từ \" để xem kết quả ! ", "/image/btnConfirm.png");
         }
 

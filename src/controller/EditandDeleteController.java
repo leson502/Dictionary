@@ -1,6 +1,6 @@
 package controller;
 
-import database.DitcData;
+import database.DictionaryData;
 import database.WordModel;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -34,10 +34,12 @@ public class EditandDeleteController implements Initializable {
     @FXML
     ListView<WordModel> wordList;
     private WordModel selectedWord;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnConfirm.setDisable(true);
         wordList.getItems().clear();
+        wordList.getItems().addAll(DictionaryData.prefixSearch(""));
     }
 
     public void wordListClickedEventHandle(Event e) {
@@ -50,7 +52,7 @@ public class EditandDeleteController implements Initializable {
 
     public void inputWordEventHandle(KeyEvent e) {
         wordList.getItems().clear();
-        wordList.getItems().addAll(DitcData.prefixSearch(inputWord.getText()));
+        wordList.getItems().addAll(DictionaryData.prefixSearch(inputWord.getText()));
     }
 
     public void btnEditAndDeleteClick(MouseEvent mouseEvent) {
@@ -70,7 +72,7 @@ public class EditandDeleteController implements Initializable {
 
     public void btnDeleteWordClick(MouseEvent mouseEvent) {
         if (selectedWord != null) {
-            DitcData.delete(selectedWord);
+            DictionaryData.delete(selectedWord);
             selectedWord = null;
             Alert("Xoá dữ liệu thành công", "Xem lại danh sách từ !!", "/image/btnConfirm.png");
         } else {
@@ -82,7 +84,7 @@ public class EditandDeleteController implements Initializable {
         btnDeleteWord.setDisable(false);
         btnCancel.setDisable(true);
         btnConfirm.setDisable(true);
-        DitcData.update(selectedWord, textShowMeaning.getText());
+        DictionaryData.update(selectedWord, textShowMeaning.getText());
         Alert("Hoàn thành", "Dữ liệu đã được sửa, hãy xem lại thay đổi !", "/image/btnConfirm.png");
     }
 
