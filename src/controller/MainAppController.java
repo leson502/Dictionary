@@ -15,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.RunDictionaryApp;
 
+import java.awt.*;
+import java.io.File;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -64,6 +66,7 @@ public class MainAppController implements Initializable {
         }
         setDefaultButtonFocus();
         setMainPane(searchPane);
+        btnSearch.setStyle("-fx-border-color: red; -fx-border-radius: 0 10 10 0; -fx-border-width: 1px 5px 1px 1px;");
     }
 
     public void setDefaultButtonFocus() {
@@ -76,6 +79,25 @@ public class MainAppController implements Initializable {
         btnExit.setFocusTraversable(false);
     }
 
+    public void setDefaultButtonSize() {
+        btnSearch.setPrefWidth(176);
+        btnParagraphTranslate.setPrefWidth(176);
+        btnAddWord.setPrefWidth(176);
+        btnEditAndDelete.setPrefWidth(176);
+    }
+
+    public void setDefaultButtonBorder() {
+        btnSearch.setStyle("-fx-border-color: gray");
+        btnAddWord.setStyle("-fx-border-color: gray");
+        btnParagraphTranslate.setStyle("-fx-border-color: gray");
+        btnEditAndDelete.setStyle("-fx-border-color: gray");
+    }
+
+    public void setButtonSize(Button button) {
+        button.setPrefWidth(190);
+        button.setStyle("-fx-border-color: red; -fx-border-radius: 0 10 10 0; -fx-border-width: 1px 5px 1px 1px;");
+    }
+
     public void setMainPane(AnchorPane pane) {
         mainPane.getChildren().clear();
         mainPane.getChildren().addAll(pane);
@@ -83,31 +105,50 @@ public class MainAppController implements Initializable {
 
     public void btnSearchEventHandle(ActionEvent event) {
         setDefaultButtonFocus();
-        btnSearch.setFocusTraversable(true);
         setMainPane(searchPane);
+        setDefaultButtonSize();
+        setDefaultButtonBorder();
+        setButtonSize(btnSearch);
     }
 
     public void btnParagraphTranslateEventHandle(ActionEvent event) {
         setDefaultButtonFocus();
-        btnParagraphTranslate.setFocusTraversable(true);
+        setDefaultButtonSize();
+        setDefaultButtonBorder();
+        setButtonSize(btnParagraphTranslate);
         setMainPane(translatePane);
     }
 
     public void btnAddWordEventHandle(ActionEvent event) {
         setDefaultButtonFocus();
-        btnAddWord.setFocusTraversable(true);
+        setDefaultButtonSize();
+        setDefaultButtonBorder();
+        setButtonSize(btnAddWord);
         setMainPane(addWordPane);
     }
 
     public void btnEditAndDeleteEventHandle(ActionEvent event) {
         setDefaultButtonFocus();
-        btnEditAndDelete.setFocusTraversable(true);
+        setDefaultButtonSize();
+        setDefaultButtonBorder();
+        setButtonSize(btnEditAndDelete);
         setMainPane(editDeletePane);
     }
 
     public void btnIntroEventHandle(ActionEvent event) {
         setDefaultButtonFocus();
-        btnIntro.setFocusTraversable(true);
+        try {
+            File file = new File("src/intro/file.html");
+            if (file.exists()) {
+                Desktop desktop = Desktop.getDesktop();
+                desktop.open(file);
+            } else {
+                System.out.println("File doest nit");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
     public void btnGoBackEventHandle(ActionEvent event) {
 

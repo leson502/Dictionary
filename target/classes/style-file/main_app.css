@@ -6,15 +6,24 @@
 
 }
 
+
 .buttonMenu {
+    -fx-background-color: #e6fff5;
     -fx-background-radius: 0 10 10 0;
-    -fx-border-color: none;
+    -fx-border-color: gray;
     -fx-border-radius: 0 10 10 0;
     -fx-focus-color: green;
 }
 
+.buttonMenu:pressed {
+    -fx-border-color: green;
+    -fx-border-radius: 0 10 10 0;
+    -fx-border-width: 0px 5px 0px 0px;
+}
+
 .buttonMenu:hover {
     -fx-cursor: hand;
+    -fx-background-color: #b3ffe0;
     -fx-background-radius: 0 10 10 0;
     -fx-border-radius: 0 10 10 0;
 }

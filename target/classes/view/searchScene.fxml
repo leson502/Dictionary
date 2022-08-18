@@ -10,7 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPaneTranslate" prefHeight="483.0" prefWidth="676.0" styleClass="mainLayout" stylesheets="@../style-file/toscene2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.searchWordController">
+<?import javafx.scene.Cursor?>
+<AnchorPane fx:id="anchorPaneTranslate" prefHeight="483.0" prefWidth="676.0" styleClass="mainLayout" stylesheets="/style-file/toscene2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.searchWordController">
    <children>
       <AnchorPane layoutX="-6.0" prefHeight="581.0" prefWidth="290.0">
          <children>
@@ -24,12 +25,12 @@
       </AnchorPane>
       <AnchorPane layoutX="289.0" layoutY="47.0" prefHeight="533.0" prefWidth="485.0" styleClass="wordMeaningArea">
          <children>
-            <TextArea fx:id="textShowMeaning" editable="false" layoutX="8.0" layoutY="54.0" prefHeight="466.0" prefWidth="477.0" text="Từ bạn chọn sẽ được hiển thị nghĩa tại đây !">
+            <TextArea fx:id="textShowMeaning" editable="false" layoutX="5.0" layoutY="54.0" prefHeight="466.0" prefWidth="477.0" styleClass="textAreaShowMeaning" text="Từ bạn chọn sẽ được hiển thị nghĩa tại đây !">
                <font>
                   <Font size="16.0" />
                </font>
             </TextArea>
-            <Button fx:id="btnVoiceUS" contentDisplay="TOP" layoutX="385.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#btnVoiceUSClick" prefHeight="39.0" prefWidth="40.0" text="EN-US">
+            <Button fx:id="btnVoiceUS" contentDisplay="TOP" layoutX="379.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#btnVoiceUSClick" prefHeight="40.0" prefWidth="46.0" styleClass="btnVoice" text="EN-US">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,6 +38,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <font>
                   <Font size="9.0" />
                </font>
@@ -46,7 +50,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Button fx:id="btnVoiceUK" contentDisplay="TOP" layoutX="431.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#btnVoiceUKClick" prefHeight="39.0" prefWidth="40.0" text="EN-UK">
+            <Button fx:id="btnVoiceUK" contentDisplay="TOP" layoutX="431.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#btnVoiceUKClick" prefHeight="40.0" prefWidth="46.0" styleClass="btnVoice" text="EN-UK">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,6 +58,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <font>
                   <Font size="9.0" />
                </font>
